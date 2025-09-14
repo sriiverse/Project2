@@ -233,12 +233,52 @@ st.markdown("""
         color: #ffffff !important;
     }
     
+    /* Force all text to white */
     .stMarkdown {
-        color: #ffffff;
+        color: #ffffff !important;
     }
     
-    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
-        color: #ffffff;
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+        color: #ffffff !important;
+    }
+    
+    .stMarkdown p {
+        color: #ffffff !important;
+    }
+    
+    .stMarkdown li {
+        color: #ffffff !important;
+    }
+    
+    .stMarkdown strong {
+        color: #ffffff !important;
+    }
+    
+    /* Text input labels */
+    .stTextArea label {
+        color: #ffffff !important;
+    }
+    
+    .stTextInput label {
+        color: #ffffff !important;
+    }
+    
+    /* Radio button text */
+    .stRadio label {
+        color: #ffffff !important;
+    }
+    
+    .stRadio div[role="radiogroup"] label {
+        color: #ffffff !important;
+    }
+    
+    /* Help text */
+    .stTextArea .help {
+        color: #cccccc !important;
+    }
+    
+    .stTextInput .help {
+        color: #cccccc !important;
     }
     
     .stSpinner {
@@ -263,6 +303,55 @@ st.markdown("""
         background: rgba(60, 30, 30, 0.7) !important;
         backdrop-filter: blur(8px) !important;
         border: 1px solid rgba(255, 107, 107, 0.3) !important;
+        color: #ffffff !important;
+    }
+    
+    /* Additional text color overrides */
+    .element-container {
+        color: #ffffff !important;
+    }
+    
+    .stButton button {
+        color: #ffffff !important;
+    }
+    
+    .stSelectbox label {
+        color: #ffffff !important;
+    }
+    
+    .stNumberInput label {
+        color: #ffffff !important;
+    }
+    
+    .stSlider label {
+        color: #ffffff !important;
+    }
+    
+    .stCheckbox label {
+        color: #ffffff !important;
+    }
+    
+    /* Force white text in all divs */
+    div[data-testid="stMarkdownContainer"] {
+        color: #ffffff !important;
+    }
+    
+    /* Sidebar text if present */
+    .sidebar .sidebar-content {
+        color: #ffffff !important;
+    }
+    
+    /* Tab text */
+    .stTabs button {
+        color: #ffffff !important;
+    }
+    
+    /* Metric text */
+    .metric-card h4 {
+        color: #ffffff !important;
+    }
+    
+    .metric-card p {
         color: #ffffff !important;
     }
     
@@ -378,7 +467,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="card">
     <div class="step-indicator">📋 Step 2: Provide Database Schema</div>
-    <p style="color: #666; margin-bottom: 1rem;">Paste your database schema below to get context-aware suggestions</p>
+    <p style="color: #ffffff; margin-bottom: 1rem;">Paste your database schema below to get context-aware suggestions</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -414,12 +503,12 @@ with col2:
     st.markdown("""
     <div class="metric-card">
         <h4 style="color: #667eea; margin-bottom: 0.5rem;">📊 Schema Info</h4>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0;">Detected tables and relationships will appear here after analysis</p>
+        <p style="font-size: 0.9rem; color: #ffffff; margin-bottom: 0;">Detected tables and relationships will appear here after analysis</p>
     </div>
     
     <div class="metric-card" style="margin-top: 1rem;">
         <h4 style="color: #667eea; margin-bottom: 0.5rem;">📝 Tips</h4>
-        <ul style="font-size: 0.85rem; color: #666; text-align: left; padding-left: 1rem;">
+        <ul style="font-size: 0.85rem; color: #ffffff; text-align: left; padding-left: 1rem;">
             <li>Include all relevant tables</li>
             <li>Include primary/foreign keys</li>
             <li>Add column data types</li>
@@ -432,7 +521,7 @@ if app_mode == "Optimize Query":
     st.markdown("""
     <div class="card">
         <div class="step-indicator">📝 Step 3: Enter Your SQL Query</div>
-        <p style="color: #666; margin-bottom: 1rem;">Paste your SQL query below to get comprehensive optimization suggestions</p>
+        <p style="color: #ffffff; margin-bottom: 1rem;">Paste your SQL query below to get comprehensive optimization suggestions</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -453,8 +542,8 @@ if app_mode == "Optimize Query":
         st.markdown("""
         <div class="metric-card">
             <h4 style="color: #f5576c; margin-bottom: 0.5rem;">🔧 Analysis</h4>
-            <p style="font-size: 0.85rem; color: #666;">We'll check for:</p>
-            <ul style="font-size: 0.8rem; color: #666; text-align: left; padding-left: 1rem;">
+            <p style="font-size: 0.85rem; color: #ffffff;">We'll check for:</p>
+            <ul style="font-size: 0.8rem; color: #ffffff; text-align: left; padding-left: 1rem;">
                 <li>Performance issues</li>
                 <li>Index suggestions</li>
                 <li>Query complexity</li>
@@ -469,7 +558,7 @@ else: # Generate Query Mode
     st.markdown("""
     <div class="card">
         <div class="step-indicator">🧠 Step 3: Describe Your Query</div>
-        <p style="color: #666; margin-bottom: 1rem;">Describe what you want to achieve in plain English</p>
+        <p style="color: #ffffff; margin-bottom: 1rem;">Describe what you want to achieve in plain English</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -489,7 +578,7 @@ else: # Generate Query Mode
         st.markdown("""
         <div class="metric-card">
             <h4 style="color: #4facfe; margin-bottom: 0.5rem;">✨ Examples</h4>
-            <ul style="font-size: 0.8rem; color: #666; text-align: left; padding-left: 1rem;">
+            <ul style="font-size: 0.8rem; color: #ffffff; text-align: left; padding-left: 1rem;">
                 <li>"Top 10 customers by revenue"</li>
                 <li>"Count users by country"</li>
                 <li>"Orders from last month"</li>
@@ -513,7 +602,7 @@ if process_button:
         st.markdown("""
         <div class="card" style="border-left: 5px solid #ff6b6b;">
             <h4 style="color: #ff6b6b; margin-bottom: 0.5rem;">⚠️ Missing Information</h4>
-            <p style="color: #666; margin-bottom: 0;">Please fill in both the database schema and your query/description to proceed.</p>
+            <p style="color: #ffffff; margin-bottom: 0;">Please fill in both the database schema and your query/description to proceed.</p>
         </div>
         """, unsafe_allow_html=True)
     else:
@@ -522,7 +611,7 @@ if process_button:
         <div class="card loading">
             <div style="text-align: center; padding: 2rem;">
                 <h3 style="color: #667eea; margin-bottom: 1rem;">🚀 Processing Your Request</h3>
-                <p style="color: #666;">Analyzing your query and generating suggestions...</p>
+                <p style="color: #ffffff;">Analyzing your query and generating suggestions...</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -566,8 +655,8 @@ if process_button:
                     st.markdown(f"""
                     <div class="metric-card">
                         <h4 style="color: #4facfe; margin-bottom: 0.5rem;">📊 Query Stats</h4>
-                        <p style="font-size: 0.9rem; color: #666;">Lines: {query_lines}</p>
-                        <p style="font-size: 0.9rem; color: #666;">Characters: {query_chars}</p>
+                        <p style="font-size: 0.9rem; color: #ffffff;">Lines: {query_lines}</p>
+                        <p style="font-size: 0.9rem; color: #ffffff;">Characters: {query_chars}</p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -584,8 +673,8 @@ if process_button:
             st.markdown(f"""
             <div class="card" style="border-left: 5px solid #ff6b6b;">
                 <h4 style="color: #ff6b6b; margin-bottom: 0.5rem;">🚫 Error Occurred</h4>
-                <p style="color: #666;">An unexpected error occurred: {e}</p>
-                <p style="color: #666; font-size: 0.9rem;">Please check your input and try again.</p>
+                <p style="color: #ffffff;">An unexpected error occurred: {e}</p>
+                <p style="color: #ffffff; font-size: 0.9rem;">Please check your input and try again.</p>
             </div>
             """, unsafe_allow_html=True)
 
