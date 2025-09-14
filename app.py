@@ -15,16 +15,32 @@ st.set_page_config(
 optimizer = SQLOptimizerEngine()
 query_generator = SQLQueryGenerator()
 
-# Custom CSS for modern styling
+# Custom CSS for modern dark theme styling
 st.markdown("""
 <style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     
+    /* Global dark theme */
+    .stApp {
+        background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+    }
+    
     /* Main container styling */
     .main {
         padding-top: 2rem;
+        background: transparent;
+    }
+    
+    /* Override Streamlit's default backgrounds */
+    .block-container {
+        background: transparent;
     }
     
     /* Custom header styling */
@@ -50,14 +66,16 @@ st.markdown("""
         margin-bottom: 0;
     }
     
-    /* Card styling */
+    /* Card styling - Dark theme */
     .card {
-        background: white;
+        background: rgba(25, 35, 45, 0.8);
+        backdrop-filter: blur(10px);
         padding: 2rem;
         border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        border: 1px solid #e1e8ed;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
         margin-bottom: 1.5rem;
+        color: #ffffff;
     }
     
     /* Feature cards */
@@ -86,13 +104,15 @@ st.markdown("""
         font-size: 0.9rem;
     }
     
-    /* Mode selector styling */
+    /* Mode selector styling - Dark theme */
     .mode-selector {
-        background: #f8f9fa;
+        background: rgba(30, 40, 55, 0.6);
         padding: 1.5rem;
         border-radius: 12px;
         border-left: 5px solid #667eea;
         margin-bottom: 2rem;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.1);
     }
     
     /* Step indicators */
@@ -106,13 +126,15 @@ st.markdown("""
         margin-bottom: 1rem;
     }
     
-    /* Success/Error message styling */
+    /* Success/Error message styling - Dark theme */
     .success-message {
-        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-        color: #2d5aa0;
+        background: rgba(30, 50, 60, 0.7);
+        backdrop-filter: blur(8px);
+        color: #a8edea;
         padding: 1rem;
         border-radius: 10px;
         border-left: 5px solid #4facfe;
+        border: 1px solid rgba(255,255,255,0.1);
         margin: 1rem 0;
     }
     
@@ -141,24 +163,33 @@ st.markdown("""
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
     
-    /* Text area styling */
+    /* Text area styling - Dark theme */
     .stTextArea textarea {
         border-radius: 10px;
-        border: 2px solid #e1e8ed;
+        border: 2px solid rgba(255,255,255,0.2) !important;
         font-family: 'Monaco', 'Consolas', monospace;
+        background: rgba(15, 25, 35, 0.8) !important;
+        color: #ffffff !important;
+        backdrop-filter: blur(5px);
     }
     
     .stTextArea textarea:focus {
-        border-color: #667eea;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        border-color: #667eea !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
     }
     
-    /* Radio button styling */
+    /* Radio button styling - Dark theme */
     .stRadio > div {
-        background: white;
+        background: rgba(25, 35, 45, 0.6);
         padding: 1rem;
         border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+    }
+    
+    .stRadio > div > label {
+        color: #ffffff !important;
     }
     
     /* Footer styling */
@@ -171,14 +202,17 @@ st.markdown("""
         margin-top: 3rem;
     }
     
-    /* Metrics styling */
+    /* Metrics styling - Dark theme */
     .metric-card {
-        background: white;
+        background: rgba(20, 30, 40, 0.7);
+        backdrop-filter: blur(8px);
         padding: 1.5rem;
         border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         text-align: center;
         border-top: 4px solid #667eea;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #ffffff;
     }
     
     /* Animation for loading */
@@ -192,6 +226,46 @@ st.markdown("""
         animation: pulse 2s infinite;
     }
     
+    /* Dark theme overrides for Streamlit components */
+    .stSelectbox > div > div {
+        background: rgba(20, 30, 40, 0.8) !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        color: #ffffff !important;
+    }
+    
+    .stMarkdown {
+        color: #ffffff;
+    }
+    
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4 {
+        color: #ffffff;
+    }
+    
+    .stSpinner {
+        color: #667eea !important;
+    }
+    
+    /* Code block dark styling */
+    .stCodeBlock {
+        background: rgba(15, 20, 30, 0.9) !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+    
+    /* Info/warning boxes dark styling */
+    .stInfo {
+        background: rgba(30, 50, 60, 0.7) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(75, 172, 254, 0.3) !important;
+        color: #ffffff !important;
+    }
+    
+    .stError {
+        background: rgba(60, 30, 30, 0.7) !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 107, 107, 0.3) !important;
+        color: #ffffff !important;
+    }
+    
     /* Responsive design */
     @media (max-width: 768px) {
         .custom-header h1 {
@@ -199,6 +273,9 @@ st.markdown("""
         }
         .card {
             padding: 1rem;
+        }
+        .stApp {
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
         }
     }
 </style>
@@ -545,5 +622,3 @@ st.markdown("""
 <!-- Additional spacing -->
 <div style="height: 2rem;"></div>
 """, unsafe_allow_html=True)
-
-
