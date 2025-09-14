@@ -1098,119 +1098,33 @@ if process_button:
         loading_container = st.container()
         
         with loading_container:
+            # Simple processing interface without complex CSS
             st.markdown("""
-            <div class="processing-container">
-                <div class="processing-header">
-                    <h3 style="color: #667eea; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
-                        <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem; animation: pulse 2s infinite;">🚀</span>
-                        Processing Pipeline Active
-                    </h3>
-                    <p style="color: #ffffff; margin-bottom: 2rem; text-align: center;">Advanced SQL analysis engines are processing your request...</p>
-                </div>
+            <div style="background: rgba(15, 25, 35, 0.8); padding: 3rem 2rem; border-radius: 15px; border: 1px solid rgba(102, 126, 234, 0.3); margin: 2rem 0; text-align: center;">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">
+                    🚀 Processing Pipeline Active
+                </h3>
+                <p style="color: #ffffff; margin-bottom: 2rem;">Advanced SQL analysis engines are processing your request...</p>
                 
-                <div class="pipeline-stages">
-                    <div class="stage-item active">
-                        <div class="stage-icon">🔍</div>
-                        <div class="stage-text">Schema Analysis</div>
+                <div style="margin: 2rem 0; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="text-align: center; min-width: 100px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+                        <div style="color: #ffffff; font-size: 0.9rem;">Schema Analysis</div>
                     </div>
-                    <div class="stage-connector"></div>
-                    <div class="stage-item active">
-                        <div class="stage-icon">⚙️</div>
-                        <div class="stage-text">Query Processing</div>
+                    <div style="text-align: center; min-width: 100px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                        <div style="color: #ffffff; font-size: 0.9rem;">Query Processing</div>
                     </div>
-                    <div class="stage-connector"></div>
-                    <div class="stage-item active">
-                        <div class="stage-icon">🎯</div>
-                        <div class="stage-text">Optimization</div>
+                    <div style="text-align: center; min-width: 100px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                        <div style="color: #ffffff; font-size: 0.9rem;">Optimization</div>
                     </div>
-                    <div class="stage-connector"></div>
-                    <div class="stage-item">
-                        <div class="stage-icon">✅</div>
-                        <div class="stage-text">Results</div>
+                    <div style="text-align: center; min-width: 100px;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                        <div style="color: #ffffff; font-size: 0.9rem;">Results</div>
                     </div>
                 </div>
             </div>
-            
-            <style>
-            @keyframes pulse {
-                0% { opacity: 1; }
-                50% { opacity: 0.6; }
-                100% { opacity: 1; }
-            }
-            
-            .processing-container {
-                background: rgba(15, 25, 35, 0.8);
-                padding: 3rem 2rem;
-                border-radius: 15px;
-                border: 1px solid rgba(102, 126, 234, 0.3);
-                backdrop-filter: blur(10px);
-                margin: 2rem 0;
-            }
-            
-            .processing-header {
-                text-align: center;
-                margin-bottom: 3rem;
-            }
-            
-            .pipeline-stages {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 0;
-            }
-            
-            .stage-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 1.5rem;
-                background: rgba(25, 35, 50, 0.8);
-                border-radius: 12px;
-                border: 2px solid rgba(255,255,255,0.1);
-                transition: all 0.3s ease;
-                min-width: 120px;
-            }
-            
-            .stage-item.active {
-                border-color: rgba(102, 126, 234, 0.5);
-                background: rgba(102, 126, 234, 0.1);
-            }
-            
-            .stage-icon {
-                font-size: 2rem;
-                margin-bottom: 0.8rem;
-                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-            }
-            
-            .stage-text {
-                color: #ffffff;
-                font-size: 0.9rem;
-                font-weight: 600;
-                text-align: center;
-            }
-            
-            .stage-connector {
-                width: 3rem;
-                height: 2px;
-                background: linear-gradient(90deg, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0.8) 50%, rgba(102, 126, 234, 0.3) 100%);
-                margin: 0 1rem;
-            }
-            
-            @media (max-width: 768px) {
-                .pipeline-stages {
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-                
-                .stage-connector {
-                    width: 2px;
-                    height: 2rem;
-                    background: linear-gradient(180deg, rgba(102, 126, 234, 0.3) 0%, rgba(102, 126, 234, 0.8) 50%, rgba(102, 126, 234, 0.3) 100%);
-                    margin: 0;
-                }
-            }
-            </style>
             """, unsafe_allow_html=True)
         
         # Simulate processing with progress
@@ -1238,54 +1152,26 @@ if process_button:
         progress_bar.empty()
         
         try:
-            # Professional Results Header
+            # Simple Results Header
             st.markdown("""
-            <div class="results-container">
-                <div class="results-header">
-                    <h3 style="color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
-                        <span style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem;">🎆</span>
-                        Analysis Results
-                    </h3>
-                    <p style="color: #8892b0; text-align: center; margin-bottom: 2rem;">Comprehensive analysis and optimization recommendations</p>
-                </div>
+            <div style="background: rgba(15, 25, 35, 0.8); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; text-align: center;">
+                <h3 style="color: #ffffff; margin-bottom: 1rem;">
+                    🎆 Analysis Results
+                </h3>
+                <p style="color: #8892b0; margin-bottom: 0;">Comprehensive analysis and optimization recommendations</p>
             </div>
-            
-            <style>
-            .results-container {
-                background: rgba(15, 25, 35, 0.6);
-                padding: 2rem;
-                border-radius: 15px;
-                border: 1px solid rgba(255,255,255,0.1);
-                backdrop-filter: blur(10px);
-                margin: 2rem 0;
-            }
-            </style>
             """, unsafe_allow_html=True)
             
             if app_mode == "Optimize Query":
                 result = get_optimization_suggestion(schema_text, prompt_text)
                 
-                # Enhanced results display for optimization
+                # Simple optimization results header
                 st.markdown("""
-                <div class="optimization-results">
-                    <div class="result-section">
-                        <h4 style="color: #667eea; margin-bottom: 1.5rem; display: flex; align-items: center;">
-                            <span style="margin-right: 0.8rem;">🔧</span>
-                            Optimization Analysis Report
-                        </h4>
-                    </div>
+                <div style="background: rgba(25, 35, 50, 0.8); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                    <h4 style="color: #667eea; margin-bottom: 1.5rem; text-align: center;">
+                        🔧 Optimization Analysis Report
+                    </h4>
                 </div>
-                
-                <style>
-                .optimization-results {
-                    background: rgba(25, 35, 50, 0.8);
-                    padding: 2rem;
-                    border-radius: 12px;
-                    border: 1px solid rgba(102, 126, 234, 0.2);
-                    backdrop-filter: blur(8px);
-                    margin: 1rem 0;
-                }
-                </style>
                 """, unsafe_allow_html=True)
                 
                 st.markdown(result)
@@ -1293,27 +1179,13 @@ if process_button:
             else: # Generate Query
                 result = generate_query_from_prompt(schema_text, prompt_text)
                 
-                # Enhanced query generation results
+                # Simple query generation results header
                 st.markdown("""
-                <div class="generation-results">
-                    <div class="result-header">
-                        <h4 style="color: #4facfe; margin-bottom: 1.5rem; display: flex; align-items: center;">
-                            <span style="margin-right: 0.8rem;">✨</span>
-                            AI-Generated SQL Query
-                        </h4>
-                    </div>
+                <div style="background: rgba(25, 35, 50, 0.8); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                    <h4 style="color: #4facfe; margin-bottom: 1.5rem; text-align: center;">
+                        ✨ AI-Generated SQL Query
+                    </h4>
                 </div>
-                
-                <style>
-                .generation-results {
-                    background: rgba(25, 35, 50, 0.8);
-                    padding: 2rem;
-                    border-radius: 12px;
-                    border: 1px solid rgba(79, 172, 254, 0.2);
-                    backdrop-filter: blur(8px);
-                    margin: 1rem 0;
-                }
-                </style>
                 """, unsafe_allow_html=True)
                 
                 col1, col2 = st.columns([3, 1])
@@ -1322,144 +1194,41 @@ if process_button:
                     st.code(result, language='sql')
                     
                 with col2:
-                    # Enhanced query statistics
+                    # Simple query statistics
                     query_lines = len(result.split('\n'))
                     query_chars = len(result)
                     query_complexity = "Medium" if query_lines > 10 else "Low"
                     
                     st.markdown(f"""
-                    <div class="query-stats">
-                        <h5 style="color: #4facfe; margin-bottom: 1rem;">📊 Query Statistics</h5>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(79, 172, 254, 0.2);">
+                        <h5 style="color: #4facfe; margin-bottom: 1rem; text-align: center;">📊 Query Statistics</h5>
                         
-                        <div class="stat-item">
-                            <span class="stat-label">Lines:</span>
-                            <span class="stat-value">{query_lines}</span>
-                        </div>
+                        <p style="color: #ffffff; margin: 0.5rem 0;">Lines: <strong>{query_lines}</strong></p>
+                        <p style="color: #ffffff; margin: 0.5rem 0;">Characters: <strong>{query_chars}</strong></p>
+                        <p style="color: #ffffff; margin: 0.5rem 0;">Complexity: <strong>{query_complexity}</strong></p>
                         
-                        <div class="stat-item">
-                            <span class="stat-label">Characters:</span>
-                            <span class="stat-value">{query_chars}</span>
-                        </div>
+                        <hr style="border: 1px solid rgba(255,255,255,0.1); margin: 1rem 0;">
                         
-                        <div class="stat-item">
-                            <span class="stat-label">Complexity:</span>
-                            <span class="stat-value complexity-{query_complexity.lower()}">{query_complexity}</span>
-                        </div>
-                        
-                        <div class="confidence-indicator">
-                            <h6 style="color: #4facfe; margin: 1rem 0 0.5rem 0;">Generation Confidence</h6>
-                            <div class="confidence-bar">
-                                <div class="confidence-fill" style="width: 92%;"></div>
-                            </div>
-                            <p style="font-size: 0.8rem; color: #8892b0; margin-top: 0.3rem;">92% - High accuracy</p>
-                        </div>
+                        <h6 style="color: #4facfe; margin: 0.5rem 0; text-align: center;">Generation Confidence</h6>
+                        <p style="text-align: center; font-size: 0.8rem; color: #8892b0; margin: 0.3rem 0;">92% - High accuracy</p>
                     </div>
-                    
-                    <style>
-                    .query-stats {
-                        background: rgba(255,255,255,0.05);
-                        padding: 1.5rem;
-                        border-radius: 10px;
-                        border: 1px solid rgba(79, 172, 254, 0.2);
-                    }
-                    
-                    .stat-item {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 0.8rem;
-                        padding: 0.5rem 0;
-                        border-bottom: 1px solid rgba(255,255,255,0.1);
-                    }
-                    
-                    .stat-item:last-of-type {
-                        border-bottom: none;
-                        margin-bottom: 1rem;
-                    }
-                    
-                    .stat-label {
-                        color: #8892b0;
-                        font-size: 0.9rem;
-                    }
-                    
-                    .stat-value {
-                        color: #ffffff;
-                        font-weight: 600;
-                        font-size: 0.9rem;
-                    }
-                    
-                    .complexity-low {
-                        color: #4ade80 !important;
-                    }
-                    
-                    .complexity-medium {
-                        color: #f59e0b !important;
-                    }
-                    
-                    .complexity-high {
-                        color: #ef4444 !important;
-                    }
-                    
-                    .confidence-indicator {
-                        margin-top: 1rem;
-                        padding-top: 1rem;
-                        border-top: 1px solid rgba(255,255,255,0.1);
-                    }
-                    
-                    .confidence-bar {
-                        background: rgba(255,255,255,0.1);
-                        height: 8px;
-                        border-radius: 4px;
-                        overflow: hidden;
-                    }
-                    
-                    .confidence-fill {
-                        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-                        height: 100%;
-                        border-radius: 4px;
-                        transition: width 0.8s ease;
-                    }
-                    </style>
                     """, unsafe_allow_html=True)
+                    
+                    # Use Streamlit's native progress bar
+                    st.progress(0.92)
                 
-                # Enhanced improvement suggestions
+                # Simple improvement suggestions
                 improvement_suggestions = suggest_query_improvements(result, {})
                 
                 st.markdown("""
-                <div class="suggestions-container">
-                    <div class="suggestions-header">
-                        <h4 style="color: #f093fb; margin-bottom: 1.5rem; display: flex; align-items: center;">
-                            <span style="margin-right: 0.8rem;">💡</span>
-                            Optimization Suggestions
-                        </h4>
-                    </div>
-                    
-                    <div class="suggestions-content">
+                <div style="background: rgba(25, 35, 50, 0.8); padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                    <h4 style="color: #f093fb; margin-bottom: 1.5rem; text-align: center;">
+                        💡 Optimization Suggestions
+                    </h4>
+                </div>
                 """, unsafe_allow_html=True)
                 
                 st.write(improvement_suggestions)
-                
-                st.markdown("""
-                    </div>
-                </div>
-                
-                <style>
-                .suggestions-container {
-                    background: rgba(25, 35, 50, 0.8);
-                    padding: 2rem;
-                    border-radius: 12px;
-                    border: 1px solid rgba(240, 147, 251, 0.2);
-                    backdrop-filter: blur(8px);
-                    margin: 2rem 0;
-                }
-                
-                .suggestions-content {
-                    background: rgba(255,255,255,0.05);
-                    padding: 1.5rem;
-                    border-radius: 8px;
-                }
-                </style>
-                """, unsafe_allow_html=True)
                 
         except Exception as e:
             # Enhanced error display
