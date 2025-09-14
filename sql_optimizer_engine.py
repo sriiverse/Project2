@@ -66,6 +66,13 @@ class SQLOptimizerEngine:
         suggestions.extend(self._check_subquery_optimization(parsed))
         suggestions.extend(self._check_order_by_without_limit(parsed))
         suggestions.extend(self._check_like_wildcards(parsed))
+        suggestions.extend(self._check_distinct_usage(parsed))
+        suggestions.extend(self._check_union_vs_union_all(parsed))
+        suggestions.extend(self._check_cartesian_products(parsed))
+        suggestions.extend(self._check_unnecessary_sorting(parsed))
+        suggestions.extend(self._check_nullable_columns(parsed))
+        suggestions.extend(self._check_data_type_mismatches(parsed))
+        suggestions.extend(self._check_inefficient_aggregations(parsed))
         
         # Calculate performance score
         performance_score = self._calculate_performance_score(suggestions)
@@ -311,6 +318,178 @@ class SQLOptimizerEngine:
                 category="Search Optimization",
                 issue="LIKE with wildcards on both ends requires full table scan",
                 suggestion="Consider using full-text search capabilities for better performance on text searches"
+            ))
+        
+        return suggestions
+    
+    def _check_distinct_usage(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for unnecessary or inefficient DISTINCT usage"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        if 'select distinct' in query_str:
+            # Check if DISTINCT is used with aggregation functions
+            if any(func in query_str for func in ['count(', 'sum(', 'avg(', 'min(', 'max(']):
+                suggestions.append(OptimizationSuggestion(
+                    level=OptimizationLevel.MEDIUM,
+                    category="Query Structure",
+                    issue="DISTINCT used with aggregation functions may be redundant",
+                    suggestion="Review if DISTINCT is necessary when using aggregation functions"
+                ))
+            
+            # Suggest using GROUP BY instead of DISTINCT when possible
+            if 'order by' in query_str:
+                suggestions.append(OptimizationSuggestion(
+                    level=OptimizationLevel.LOW,
+                    category="Query Structure",
+                    issue="DISTINCT with ORDER BY can be expensive",
+                    suggestion="Consider using GROUP BY instead of DISTINCT when ordering results"
+                ))
+        
+        return suggestions
+    
+    def _check_union_vs_union_all(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for UNION usage where UNION ALL would be more efficient"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        if 'union' in query_str and 'union all' not in query_str:
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.MEDIUM,
+                category="Query Structure",
+                issue="UNION removes duplicates which requires extra processing",
+                suggestion="Use UNION ALL if duplicates are acceptable or if you're certain there are no duplicates",
+                optimized_query=str(parsed).replace('UNION', 'UNION ALL')
+            ))
+        
+        return suggestions
+    
+    def _check_cartesian_products(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for potential cartesian products (missing JOIN conditions)"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        # Count tables and JOIN clauses
+        from_tables = len(re.findall(r'\bfrom\s+\w+', query_str))
+        join_clauses = len(re.findall(r'\bjoin\b', query_str))
+        where_joins = len(re.findall(r'where.*?\w+\.\w+\s*=\s*\w+\.\w+', query_str))
+        
+        # If we have multiple tables but no proper joins
+        if from_tables > 1 and join_clauses == 0 and where_joins == 0:
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.CRITICAL,
+                category="Query Structure",
+                issue="Potential cartesian product detected - multiple tables without JOIN conditions",
+                suggestion="Add proper JOIN conditions or WHERE clauses to avoid cartesian products"
+            ))
+        
+        return suggestions
+    
+    def _check_unnecessary_sorting(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for multiple or unnecessary sorting operations"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        # Check for ORDER BY in subqueries
+        if 'order by' in query_str:
+            # Count ORDER BY clauses
+            order_by_count = len(re.findall(r'order\s+by', query_str))
+            
+            if order_by_count > 1:
+                suggestions.append(OptimizationSuggestion(
+                    level=OptimizationLevel.MEDIUM,
+                    category="Performance",
+                    issue="Multiple ORDER BY clauses detected",
+                    suggestion="Remove ORDER BY from subqueries unless absolutely necessary"
+                ))
+            
+            # Check for ORDER BY with functions
+            if re.search(r'order\s+by.*?\w+\s*\(', query_str):
+                suggestions.append(OptimizationSuggestion(
+                    level=OptimizationLevel.MEDIUM,
+                    category="Index Usage",
+                    issue="ORDER BY uses functions which prevents index usage",
+                    suggestion="Consider creating computed columns or functional indexes"
+                ))
+        
+        return suggestions
+    
+    def _check_nullable_columns(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for operations on potentially nullable columns"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        # Check for comparisons that might not handle NULLs properly
+        if re.search(r'where.*?\w+\s*[<>=!]', query_str) and 'is null' not in query_str and 'is not null' not in query_str:
+            # This is a heuristic - in practice, you'd need schema information
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.LOW,
+                category="Data Integrity",
+                issue="Consider NULL handling in WHERE conditions",
+                suggestion="Explicitly handle NULL values with IS NULL or IS NOT NULL clauses where appropriate"
+            ))
+        
+        return suggestions
+    
+    def _check_data_type_mismatches(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for potential data type mismatches that could cause performance issues"""
+        suggestions = []
+        query_str = str(parsed)
+        
+        # Check for comparing strings to numbers (more sophisticated than before)
+        if re.search(r"\w+\s*[<>=]\s*['\"]\d+['\"]|['\"]\d+['\"]\s*[<>=]\s*\w+", query_str):
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.MEDIUM,
+                category="Data Types",
+                issue="Potential data type mismatch between string and numeric values",
+                suggestion="Ensure consistent data types in comparisons to avoid implicit conversions"
+            ))
+        
+        # Check for date string comparisons
+        if re.search(r"\w+\s*[<>=]\s*['\"]\d{4}-\d{2}-\d{2}['\"]|['\"]\d{4}-\d{2}-\d{2}['\"]\s*[<>=]\s*\w+", query_str):
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.LOW,
+                category="Data Types",
+                issue="String comparison with date format detected",
+                suggestion="Use proper date functions like DATE() for date comparisons"
+            ))
+        
+        return suggestions
+    
+    def _check_inefficient_aggregations(self, parsed) -> List[OptimizationSuggestion]:
+        """Check for inefficient aggregation patterns"""
+        suggestions = []
+        query_str = str(parsed).lower()
+        
+        # Check for COUNT(*) vs COUNT(column)
+        if 'count(*)' in query_str and 'where' not in query_str:
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.LOW,
+                category="Performance",
+                issue="COUNT(*) without WHERE clause may be slow on large tables",
+                suggestion="Consider using table statistics or adding WHERE conditions to limit the count"
+            ))
+        
+        # Check for nested aggregations
+        if re.search(r'\b(count|sum|avg|min|max)\s*\(.*?\b(count|sum|avg|min|max)\s*\(', query_str):
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.HIGH,
+                category="Query Structure",
+                issue="Nested aggregation functions detected",
+                suggestion="Break down complex aggregations into multiple queries or use window functions"
+            ))
+        
+        # Check for aggregation without GROUP BY but with non-aggregate columns
+        has_aggregate = any(func in query_str for func in ['count(', 'sum(', 'avg(', 'min(', 'max('])
+        has_group_by = 'group by' in query_str
+        
+        if has_aggregate and not has_group_by:
+            # This is a simplified check - in practice, you'd need to parse the SELECT list
+            suggestions.append(OptimizationSuggestion(
+                level=OptimizationLevel.LOW,
+                category="Query Structure",
+                issue="Mixing aggregate and non-aggregate columns may require GROUP BY",
+                suggestion="Ensure all non-aggregate columns in SELECT are included in GROUP BY clause"
             ))
         
         return suggestions
