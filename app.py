@@ -554,9 +554,16 @@ st.markdown("""
         <div>
             <h1 style="margin-bottom: 0.5rem;">🚀 SQL Assistant Pro</h1>
             <p style="margin: 0; opacity: 0.9;">Enterprise SQL Optimization & Query Generation Platform</p>
-            <div style="margin-top: 0.5rem;">
-                <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin-right: 0.5rem;">👨‍💻 Sudhanshu Sinha</span>
-                <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin-right: 0.5rem;">✨ v2.0</span>
+            <div style="margin-top: 0.5rem; display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; display: flex; align-items: center;">
+                    👨‍💻 Sudhanshu Sinha
+                    <a href="https://www.linkedin.com/in/sudhanshu-sinha-4619a429a/" target="_blank" style="margin-left: 0.5rem; text-decoration: none; display: flex; align-items: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5" style="filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </span>
+                <span style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem;">✨ v2.0</span>
                 <span style="background: rgba(102, 234, 146, 0.3); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem;">✓ Online</span>
             </div>
         </div>
@@ -713,8 +720,15 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Sample schema for user convenience
-sample_schema = '''CREATE TABLE users (
+# Schema input with improved styling
+col1, col2 = st.columns([3, 1])
+with col1:
+    schema_text = st.text_area(
+        "Database Schema (CREATE TABLE statements)\nEnter your table creation statement",
+        value="",
+        height=200,
+        help="Paste your CREATE TABLE statements here for better analysis",
+        placeholder="""CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -727,18 +741,7 @@ CREATE TABLE orders (
     product_name VARCHAR(100),
     amount DECIMAL(10, 2),
     order_date DATE
-);
-'''
-
-# Schema input with improved styling
-col1, col2 = st.columns([3, 1])
-with col1:
-    schema_text = st.text_area(
-        "Database Schema (CREATE TABLE statements)",
-        value=sample_schema,
-        height=200,
-        help="Paste your CREATE TABLE statements here for better analysis",
-        placeholder="Paste your CREATE TABLE statements..."
+);"""
     )
 
 with col2:
@@ -791,8 +794,13 @@ if app_mode == "Optimize Query":
     col1, col2 = st.columns([3, 1])
     
     with col1:
-        # Sample query with more complex example
-        sample_query = """SELECT u.username, u.email, COUNT(o.order_id) as order_count,
+        prompt_text = st.text_area(
+            "SQL Query to Optimize",
+            value="",
+            height=200,
+            help="💡 Enter your SQL query for comprehensive performance analysis",
+            placeholder="""-- Enter your SQL query here for optimization analysis
+SELECT u.username, u.email, COUNT(o.order_id) as order_count,
        SUM(o.amount) as total_spent
 FROM users u
 LEFT JOIN orders o ON u.user_id = o.user_id
@@ -801,13 +809,6 @@ GROUP BY u.user_id, u.username, u.email
 HAVING COUNT(o.order_id) > 5
 ORDER BY total_spent DESC
 LIMIT 10;"""
-        
-        prompt_text = st.text_area(
-            "SQL Query to Optimize",
-            value=sample_query,
-            height=200,
-            help="💡 Enter your SQL query for comprehensive performance analysis",
-            placeholder="-- Enter your SQL query here\nSELECT column1, column2\nFROM table1\nWHERE condition..."
         )
     
     with col2:
@@ -905,20 +906,17 @@ else: # Generate Query Mode - AI-Powered Query Generation
     col1, col2 = st.columns([3, 1])
     
     with col1:
-        # More sophisticated sample prompt
-        sample_prompt = """Find the top 10 customers who have placed orders in the last 6 months, 
-show their total spending, order count, and average order value, 
-ordered by total spending descending."""
-        
         prompt_text = st.text_area(
             "Natural Language Query Description",
-            value=sample_prompt,
+            value="",
             height=180,
             help="🤖 Describe your data query in natural language - be as specific as possible",
             placeholder="""Examples:
+- "Find the top 10 customers who have placed orders in the last 6 months"
 - "Show me all customers from New York who ordered more than $500 worth of products"
 - "Calculate the monthly revenue for each product category in 2023"
-- "Find users who haven't logged in for more than 30 days"""
+- "Find users who haven't logged in for more than 30 days"
+- "Get average order value by customer segment"""
         )
     
     with col2:
@@ -1310,7 +1308,18 @@ st.markdown("""
     </div>
     <hr style="border: none; height: 1px; background: rgba(255,255,255,0.2); margin: 1.5rem 0;">
     <p style="margin-bottom: 0.5rem;">Made with ❤️ using <strong>Streamlit</strong> and <strong>Custom Rule-Based Analysis</strong></p>
-    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Developed by <strong>Sudhanshu Sinha</strong> | No external APIs required!</p>
+    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        Developed by <strong>Sudhanshu Sinha</strong> | No external APIs required!
+    </p>
+    <div style="margin: 1rem 0; display: flex; align-items: center; justify-content: center; gap: 1rem;">
+        <span style="font-size: 0.9rem; color: #ffffff;">Contact me:</span>
+        <a href="mailto:sudhanshutheking183@gmail.com" style="text-decoration: none; display: flex; align-items: center; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#EA4335" style="margin-right: 0.5rem;">
+                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.9.732-1.636 1.636-1.636h.004L12 12.01l10.36-8.189h.004A1.636 1.636 0 0 1 24 5.457z"/>
+            </svg>
+            <span style="color: #ffffff; font-size: 0.9rem;">Gmail</span>
+        </a>
+    </div>
     <div style="margin-top: 1rem;">
         <p style="font-size: 0.8rem; opacity: 0.7;">🎆 Professional SQL optimization and query generation tool for developers</p>
     </div>
