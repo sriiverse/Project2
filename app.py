@@ -811,48 +811,29 @@ LIMIT 10;"""
         )
     
     with col2:
+        # Analysis Pipeline using native Streamlit components
+        st.markdown("<div style='background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;'>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #f5576c; text-align: center; margin-bottom: 1rem;'>🔍 Analysis Pipeline</h4>", unsafe_allow_html=True)
+        
+        # Use simple text with emojis instead of complex HTML
         st.markdown("""
-        <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(245, 87, 108, 0.2); margin-bottom: 1rem;">
-            <h4 style="color: #f5576c; margin-bottom: 1rem; text-align: center;">
-                🔍 Analysis Pipeline
-            </h4>
-            
-            <div style="margin-bottom: 1.5rem;">
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">⚡</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Bottlenecks</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">📊</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Index Recommendations</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">🎯</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Query Complexity Analysis</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">✅</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Best Practice Validation</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">🔧</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Optimization Suggestions</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">📈</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Metrics</span>
-                </div>
-            </div>
-            
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <h5 style="color: #667eea; margin-bottom: 0.5rem; text-align: center;">🎯 Analysis Confidence</h5>
-                <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; overflow: hidden;">
-                    <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); height: 100%; width: 85%; border-radius: 4px;"></div>
-                </div>
-                <p style="font-size: 0.8rem; color: #8892b0; margin-top: 0.5rem; text-align: center;">85% - Schema provided</p>
-            </div>
+        <div style='margin-bottom: 1rem;'>
+            ⚡ Performance Bottlenecks<br>
+            📊 Index Recommendations<br>
+            🎯 Query Complexity Analysis<br>
+            ✅ Best Practice Validation<br>
+            🔧 Optimization Suggestions<br>
+            📈 Performance Metrics
         </div>
         """, unsafe_allow_html=True)
+        
+        st.markdown("<h5 style='color: #667eea; text-align: center; margin-bottom: 0.5rem;'>🎯 Analysis Confidence</h5>", unsafe_allow_html=True)
+        
+        # Use Streamlit's progress bar instead of custom HTML
+        st.progress(0.85)
+        st.markdown("<p style='text-align: center; font-size: 0.8rem; color: #8892b0;'>85% - Schema provided</p>", unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
     
     # Advanced analysis options
     st.markdown("<div style='margin: 2rem 0;'>", unsafe_allow_html=True)
@@ -941,52 +922,34 @@ ordered by total spending descending."""
         )
     
     with col2:
+        # AI Assistant using native Streamlit components
+        st.markdown("<div style='background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;'>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #4facfe; text-align: center; margin-bottom: 1rem;'>🤖 AI Assistant</h4>", unsafe_allow_html=True)
+        
+        # Use simple text with emojis instead of complex HTML
         st.markdown("""
-        <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(79, 172, 254, 0.2); margin-bottom: 1rem;">
-            <h4 style="color: #4facfe; margin-bottom: 1rem; text-align: center;">
-                🤖 AI Assistant
-            </h4>
-            
-            <div style="margin-bottom: 1.5rem;">
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">📊</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Smart Pattern Recognition</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">🎯</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Context-Aware Generation</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">⚡</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Optimization</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">🔍</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Schema Integration</span>
-                </div>
-                <div style="display: flex; align-items: center; margin-bottom: 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
-                    <span style="margin-right: 0.8rem; font-size: 1rem;">🚀</span>
-                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Best Practice Application</span>
-                </div>
-            </div>
-            
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <h5 style="color: #4facfe; margin-bottom: 0.8rem; text-align: center;">📚 Query Examples</h5>
-                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
-                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Top revenue customers"</div>
-                </div>
-                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
-                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Monthly sales trends"</div>
-                </div>
-                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
-                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Inactive user analysis"</div>
-                </div>
-                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0; border-radius: 6px; border-left: 3px solid #4facfe;">
-                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Product performance metrics"</div>
-                </div>
-            </div>
+        <div style='margin-bottom: 1.5rem;'>
+            📊 Smart Pattern Recognition<br>
+            🎯 Context-Aware Generation<br>
+            ⚡ Performance Optimization<br>
+            🔍 Schema Integration<br>
+            🚀 Best Practice Application
         </div>
         """, unsafe_allow_html=True)
+        
+        st.markdown("<h5 style='color: #4facfe; text-align: center; margin-bottom: 0.8rem;'>📚 Query Examples</h5>", unsafe_allow_html=True)
+        
+        # Use simple text instead of complex styled divs
+        st.markdown("""
+        <div style='background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;'>
+            • "Top revenue customers"<br>
+            • "Monthly sales trends"<br>
+            • "Inactive user analysis"<br>
+            • "Product performance metrics"
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
     
     # AI Generation options
     st.markdown("<div style='margin: 2rem 0;'>", unsafe_allow_html=True)
