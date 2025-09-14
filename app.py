@@ -655,142 +655,46 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # Professional Workflow Navigation
 st.markdown("""
-<div class="workflow-container">
-    <div class="workflow-header">
-        <h3 style="color: #ffffff; margin-bottom: 1rem; display: flex; align-items: center;">
-            <span style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem;">🎯</span>
-            Development Workflow
+<div style="background: rgba(15, 25, 35, 0.8); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h3 style="color: #ffffff; margin-bottom: 1rem;">
+            🎯 Development Workflow
         </h3>
-        <p style="color: #8892b0; margin-bottom: 1.5rem;">Choose your development task to begin the analysis pipeline</p>
-    </div>
-    
-    <div class="workflow-modes">
-        <div class="mode-option" id="optimize-mode">
-            <div class="mode-icon">🔧</div>
-            <div class="mode-content">
-                <h4>Query Optimization</h4>
-                <p>Analyze existing SQL queries for performance bottlenecks, anti-patterns, and optimization opportunities</p>
-                <div class="mode-features">
-                    <span class="feature-tag">Performance Analysis</span>
-                    <span class="feature-tag">Index Suggestions</span>
-                    <span class="feature-tag">Best Practices</span>
-                </div>
-            </div>
-            <div class="mode-arrow">→</div>
-        </div>
-        
-        <div class="mode-option" id="generate-mode">
-            <div class="mode-icon">✨</div>
-            <div class="mode-content">
-                <h4>Query Generation</h4>
-                <p>Convert natural language descriptions into optimized SQL queries using intelligent pattern matching</p>
-                <div class="mode-features">
-                    <span class="feature-tag">NLP Processing</span>
-                    <span class="feature-tag">Schema Awareness</span>
-                    <span class="feature-tag">Smart Templates</span>
-                </div>
-            </div>
-            <div class="mode-arrow">→</div>
-        </div>
+        <p style="color: #8892b0;">Choose your development task to begin the analysis pipeline</p>
     </div>
 </div>
-
-<style>
-.workflow-container {
-    background: rgba(15, 25, 35, 0.6);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    margin: 2rem 0;
-}
-
-.workflow-modes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.mode-option {
-    background: rgba(25, 35, 50, 0.8);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 2px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.mode-option:hover {
-    transform: translateY(-5px);
-    border-color: rgba(102, 126, 234, 0.5);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
-}
-
-.mode-option::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
-}
-
-.mode-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-}
-
-.mode-content h4 {
-    color: #ffffff;
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-}
-
-.mode-content p {
-    color: #8892b0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-}
-
-.mode-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.feature-tag {
-    background: rgba(102, 126, 234, 0.2);
-    color: #667eea;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(102, 126, 234, 0.3);
-}
-
-.mode-arrow {
-    position: absolute;
-    top: 50%;
-    right: 1.5rem;
-    transform: translateY(-50%);
-    font-size: 1.5rem;
-    color: #667eea;
-    opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-    .workflow-modes {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
 """, unsafe_allow_html=True)
+
+# Professional Mode Cards
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("""
+    <div style="background: rgba(25, 35, 50, 0.8); padding: 2rem; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); text-align: center; height: 300px;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">🔧</div>
+        <h4 style="color: #ffffff; margin-bottom: 1rem;">Query Optimization</h4>
+        <p style="color: #8892b0; margin-bottom: 1.5rem; font-size: 0.9rem;">Analyze existing SQL queries for performance bottlenecks and optimization opportunities</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+            <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Performance Analysis</span>
+            <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Index Suggestions</span>
+            <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Best Practices</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div style="background: rgba(25, 35, 50, 0.8); padding: 2rem; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); text-align: center; height: 300px;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+        <h4 style="color: #ffffff; margin-bottom: 1rem;">Query Generation</h4>
+        <p style="color: #8892b0; margin-bottom: 1.5rem; font-size: 0.9rem;">Convert natural language into optimized SQL queries using intelligent pattern matching</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
+            <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">NLP Processing</span>
+            <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Schema Awareness</span>
+            <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Smart Templates</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Professional Mode Selection
 app_mode = st.radio(
@@ -856,105 +760,31 @@ with col2:
 
 # Mode-Specific UI with Professional Design
 if app_mode == "Optimize Query":
-    # Advanced Query Optimization Workspace
+    # Query Optimization Lab Header
     st.markdown("""
-    <div class="optimization-workspace">
-        <div class="workspace-header">
-            <h3 style="color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                <span style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem;">🔧</span>
-                Query Optimization Lab
-            </h3>
-            <p style="color: #8892b0; margin-bottom: 2rem;">Advanced SQL performance analysis and optimization engine</p>
-        </div>
-        
-        <div class="input-section">
-            <div class="input-header">
-                <div class="input-title">
-                    <span class="step-badge">03</span>
-                    <span>SQL Query Editor</span>
-                </div>
-                <div class="input-actions">
-                    <span class="action-btn" id="format-btn">📋 Format</span>
-                    <span class="action-btn" id="validate-btn">✓ Validate</span>
-                    <span class="action-btn" id="clear-btn">🗑️ Clear</span>
-                </div>
+    <div style="background: rgba(15, 25, 35, 0.8); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; text-align: center;">
+        <h3 style="color: #ffffff; margin-bottom: 0.5rem;">
+            🔧 Query Optimization Lab
+        </h3>
+        <p style="color: #8892b0; margin-bottom: 0;">Advanced SQL performance analysis and optimization engine</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Query Editor Section
+    st.markdown("""
+    <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin: 1rem 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; color: #ffffff; font-size: 1.1rem; font-weight: 600;">
+                <span style="background: #667eea; color: white; padding: 0.3rem 0.7rem; border-radius: 50%; font-size: 0.9rem; font-weight: bold; margin-right: 0.8rem; width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center;">03</span>
+                SQL Query Editor
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">📋 Format</span>
+                <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">✓ Validate</span>
+                <span style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">🗑️ Clear</span>
             </div>
         </div>
     </div>
-    
-    <style>
-    .optimization-workspace {
-        background: rgba(15, 25, 35, 0.6);
-        padding: 2rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        margin: 2rem 0;
-    }
-    
-    .workspace-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    
-    .input-section {
-        background: rgba(25, 35, 50, 0.8);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .input-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-    
-    .input-title {
-        display: flex;
-        align-items: center;
-        color: #ffffff;
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-    
-    .step-badge {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 0.3rem 0.7rem;
-        border-radius: 50%;
-        font-size: 0.9rem;
-        font-weight: bold;
-        margin-right: 0.8rem;
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .input-actions {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    .action-btn {
-        background: rgba(102, 126, 234, 0.2);
-        color: #667eea;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(102, 126, 234, 0.3);
-    }
-    
-    .action-btn:hover {
-        background: rgba(102, 126, 234, 0.3);
-        transform: translateY(-2px);
-    }
-    </style>
     """, unsafe_allow_html=True)
     
     # Enhanced query editor with professional styling
@@ -982,109 +812,46 @@ LIMIT 10;"""
     
     with col2:
         st.markdown("""
-        <div class="analysis-panel">
-            <div class="panel-header">
-                <h4 style="color: #f5576c; margin-bottom: 1rem; display: flex; align-items: center;">
-                    <span style="margin-right: 0.5rem;">🔍</span>
-                    Analysis Pipeline
-                </h4>
-            </div>
+        <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(245, 87, 108, 0.2); margin-bottom: 1rem;">
+            <h4 style="color: #f5576c; margin-bottom: 1rem; text-align: center;">
+                🔍 Analysis Pipeline
+            </h4>
             
-            <div class="analysis-features">
-                <div class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <span class="feature-text">Performance Bottlenecks</span>
+            <div style="margin-bottom: 1.5rem;">
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">⚡</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Bottlenecks</span>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">📊</span>
-                    <span class="feature-text">Index Recommendations</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">📊</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Index Recommendations</span>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🎯</span>
-                    <span class="feature-text">Query Complexity Analysis</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">🎯</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Query Complexity Analysis</span>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">✅</span>
-                    <span class="feature-text">Best Practice Validation</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">✅</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Best Practice Validation</span>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🔧</span>
-                    <span class="feature-text">Optimization Suggestions</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">🔧</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Optimization Suggestions</span>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">📈</span>
-                    <span class="feature-text">Performance Metrics</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">📈</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Metrics</span>
                 </div>
             </div>
             
-            <div class="confidence-meter">
-                <h5 style="color: #667eea; margin-bottom: 0.5rem;">🎯 Analysis Confidence</h5>
-                <div class="meter-bar">
-                    <div class="meter-fill" style="width: 85%;"></div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+                <h5 style="color: #667eea; margin-bottom: 0.5rem; text-align: center;">🎯 Analysis Confidence</h5>
+                <div style="background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; overflow: hidden;">
+                    <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); height: 100%; width: 85%; border-radius: 4px;"></div>
                 </div>
-                <p style="font-size: 0.8rem; color: #8892b0; margin-top: 0.5rem;">85% - Schema provided</p>
+                <p style="font-size: 0.8rem; color: #8892b0; margin-top: 0.5rem; text-align: center;">85% - Schema provided</p>
             </div>
         </div>
-        
-        <style>
-        .analysis-panel {
-            background: rgba(25, 35, 50, 0.8);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(245, 87, 108, 0.2);
-            backdrop-filter: blur(8px);
-        }
-        
-        .analysis-features {
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            padding: 0.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            background: rgba(245, 87, 108, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .feature-icon {
-            margin-right: 0.8rem;
-            font-size: 1rem;
-        }
-        
-        .feature-text {
-            color: #ffffff;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .confidence-meter {
-            background: rgba(255,255,255,0.05);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .meter-bar {
-            background: rgba(255,255,255,0.1);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .meter-fill {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        </style>
         """, unsafe_allow_html=True)
     
     # Advanced analysis options
@@ -1126,56 +893,31 @@ LIMIT 10;"""
     button_label = "🚀 Execute Optimization Pipeline"
 
 else: # Generate Query Mode - AI-Powered Query Generation
-    # Advanced AI Query Generation Workspace
+    # AI Query Generation Lab Header
     st.markdown("""
-    <div class="generation-workspace">
-        <div class="workspace-header">
-            <h3 style="color: #ffffff; margin-bottom: 0.5rem; display: flex; align-items: center;">
-                <span style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem;">✨</span>
-                AI Query Generation Lab
-            </h3>
-            <p style="color: #8892b0; margin-bottom: 2rem;">Transform natural language into optimized SQL queries using intelligent pattern matching</p>
-        </div>
-        
-        <div class="input-section">
-            <div class="input-header">
-                <div class="input-title">
-                    <span class="step-badge ai-badge">03</span>
-                    <span>Natural Language Processor</span>
-                </div>
-                <div class="input-actions">
-                    <span class="action-btn ai-btn" id="suggest-btn">💡 Suggest</span>
-                    <span class="action-btn ai-btn" id="examples-btn">📚 Examples</span>
-                    <span class="action-btn ai-btn" id="clear-btn">🗑️ Clear</span>
-                </div>
+    <div style="background: rgba(15, 25, 35, 0.8); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; text-align: center;">
+        <h3 style="color: #ffffff; margin-bottom: 0.5rem;">
+            ✨ AI Query Generation Lab
+        </h3>
+        <p style="color: #8892b0; margin-bottom: 0;">Transform natural language into optimized SQL queries using intelligent pattern matching</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Natural Language Processor Section
+    st.markdown("""
+    <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin: 1rem 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; color: #ffffff; font-size: 1.1rem; font-weight: 600;">
+                <span style="background: #4facfe; color: white; padding: 0.3rem 0.7rem; border-radius: 50%; font-size: 0.9rem; font-weight: bold; margin-right: 0.8rem; width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center;">03</span>
+                Natural Language Processor
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(79, 172, 254, 0.3);">💡 Suggest</span>
+                <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(79, 172, 254, 0.3);">📚 Examples</span>
+                <span style="background: rgba(79, 172, 254, 0.2); color: #4facfe; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid rgba(79, 172, 254, 0.3);">🗑️ Clear</span>
             </div>
         </div>
     </div>
-    
-    <style>
-    .generation-workspace {
-        background: rgba(15, 25, 35, 0.6);
-        padding: 2rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        margin: 2rem 0;
-    }
-    
-    .ai-badge {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-    }
-    
-    .ai-btn {
-        background: rgba(79, 172, 254, 0.2) !important;
-        color: #4facfe !important;
-        border: 1px solid rgba(79, 172, 254, 0.3) !important;
-    }
-    
-    .ai-btn:hover {
-        background: rgba(79, 172, 254, 0.3) !important;
-    }
-    </style>
     """, unsafe_allow_html=True)
     
     # Enhanced natural language input with AI suggestions
@@ -1200,120 +942,50 @@ ordered by total spending descending."""
     
     with col2:
         st.markdown("""
-        <div class="ai-panel">
-            <div class="panel-header">
-                <h4 style="color: #4facfe; margin-bottom: 1rem; display: flex; align-items: center;">
-                    <span style="margin-right: 0.5rem;">🤖</span>
-                    AI Assistant
-                </h4>
-            </div>
+        <div style="background: rgba(25, 35, 50, 0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(79, 172, 254, 0.2); margin-bottom: 1rem;">
+            <h4 style="color: #4facfe; margin-bottom: 1rem; text-align: center;">
+                🤖 AI Assistant
+            </h4>
             
-            <div class="ai-features">
-                <div class="ai-feature-item">
-                    <span class="ai-feature-icon">📊</span>
-                    <span class="ai-feature-text">Smart Pattern Recognition</span>
+            <div style="margin-bottom: 1.5rem;">
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">📊</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Smart Pattern Recognition</span>
                 </div>
-                <div class="ai-feature-item">
-                    <span class="ai-feature-icon">🎯</span>
-                    <span class="ai-feature-text">Context-Aware Generation</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">🎯</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Context-Aware Generation</span>
                 </div>
-                <div class="ai-feature-item">
-                    <span class="ai-feature-icon">⚡</span>
-                    <span class="ai-feature-text">Performance Optimization</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">⚡</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Performance Optimization</span>
                 </div>
-                <div class="ai-feature-item">
-                    <span class="ai-feature-icon">🔍</span>
-                    <span class="ai-feature-text">Schema Integration</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0.8rem; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">🔍</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Schema Integration</span>
                 </div>
-                <div class="ai-feature-item">
-                    <span class="ai-feature-icon">🚀</span>
-                    <span class="ai-feature-text">Best Practice Application</span>
+                <div style="display: flex; align-items: center; margin-bottom: 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 6px;">
+                    <span style="margin-right: 0.8rem; font-size: 1rem;">🚀</span>
+                    <span style="color: #ffffff; font-size: 0.85rem; font-weight: 500;">Best Practice Application</span>
                 </div>
             </div>
             
-            <div class="example-queries">
-                <h5 style="color: #4facfe; margin-bottom: 0.8rem;">📚 Query Examples</h5>
-                <div class="example-item">
-                    <div class="example-text">"Top revenue customers"</div>
+            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+                <h5 style="color: #4facfe; margin-bottom: 0.8rem; text-align: center;">📚 Query Examples</h5>
+                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
+                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Top revenue customers"</div>
                 </div>
-                <div class="example-item">
-                    <div class="example-text">"Monthly sales trends"</div>
+                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
+                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Monthly sales trends"</div>
                 </div>
-                <div class="example-item">
-                    <div class="example-text">"Inactive user analysis"</div>
+                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0.4rem 0; border-radius: 6px; border-left: 3px solid #4facfe;">
+                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Inactive user analysis"</div>
                 </div>
-                <div class="example-item">
-                    <div class="example-text">"Product performance metrics"</div>
+                <div style="background: rgba(79, 172, 254, 0.1); padding: 0.5rem 0.8rem; margin: 0; border-radius: 6px; border-left: 3px solid #4facfe;">
+                    <div style="color: #ffffff; font-size: 0.8rem; font-weight: 500;">"Product performance metrics"</div>
                 </div>
             </div>
         </div>
-        
-        <style>
-        .ai-panel {
-            background: rgba(25, 35, 50, 0.8);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(79, 172, 254, 0.2);
-            backdrop-filter: blur(8px);
-        }
-        
-        .ai-features {
-            margin-bottom: 1.5rem;
-        }
-        
-        .ai-feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            padding: 0.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .ai-feature-item:hover {
-            background: rgba(79, 172, 254, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .ai-feature-icon {
-            margin-right: 0.8rem;
-            font-size: 1rem;
-        }
-        
-        .ai-feature-text {
-            color: #ffffff;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .example-queries {
-            background: rgba(255,255,255,0.05);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .example-item {
-            background: rgba(79, 172, 254, 0.1);
-            padding: 0.5rem 0.8rem;
-            margin: 0.4rem 0;
-            border-radius: 6px;
-            border-left: 3px solid #4facfe;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .example-item:hover {
-            background: rgba(79, 172, 254, 0.2);
-            transform: translateX(3px);
-        }
-        
-        .example-text {
-            color: #ffffff;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        </style>
         """, unsafe_allow_html=True)
     
     # AI Generation options
@@ -1356,26 +1028,12 @@ ordered by total spending descending."""
 
 # Professional Execution Pipeline
 st.markdown("""
-<div class="execution-section">
-    <div class="execution-header">
-        <h3 style="color: #ffffff; text-align: center; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
-            <span style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 0.5rem; border-radius: 8px; margin-right: 0.8rem;">🚀</span>
-            Ready to Execute
-        </h3>
-        <p style="color: #8892b0; text-align: center; margin-bottom: 2rem;">Your analysis pipeline is configured and ready to process</p>
-    </div>
+<div style="background: rgba(15, 25, 35, 0.8); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; text-align: center;">
+    <h3 style="color: #ffffff; margin-bottom: 1rem;">
+        🚀 Ready to Execute
+    </h3>
+    <p style="color: #8892b0; margin-bottom: 0;">Your analysis pipeline is configured and ready to process</p>
 </div>
-
-<style>
-.execution-section {
-    background: rgba(15, 25, 35, 0.6);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    margin: 2rem 0;
-}
-</style>
 """, unsafe_allow_html=True)
 
 # Enhanced execution button with professional styling
