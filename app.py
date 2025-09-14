@@ -1098,34 +1098,38 @@ if process_button:
         loading_container = st.container()
         
         with loading_container:
-            # Simple processing interface without complex CSS
-            st.markdown("""
-            <div style="background: rgba(15, 25, 35, 0.8); padding: 3rem 2rem; border-radius: 15px; border: 1px solid rgba(102, 126, 234, 0.3); margin: 2rem 0; text-align: center;">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">
-                    🚀 Processing Pipeline Active
-                </h3>
-                <p style="color: #ffffff; margin-bottom: 2rem;">Advanced SQL analysis engines are processing your request...</p>
+            # Use native Streamlit components only
+            st.markdown("<div style='text-align: center; margin: 2rem 0;'>", unsafe_allow_html=True)
+            st.markdown("<h3 style='color: #667eea;'>🚀 Processing Pipeline Active</h3>", unsafe_allow_html=True)
+            st.markdown("<p style='color: #ffffff;'>Advanced SQL analysis engines are processing your request...</p>", unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
+            
+            # Use native Streamlit columns instead of HTML flex
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                st.markdown("🔍")
+                st.markdown("**Schema Analysis**")
+                st.markdown("</div>", unsafe_allow_html=True)
                 
-                <div style="margin: 2rem 0; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                    <div style="text-align: center; min-width: 100px;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
-                        <div style="color: #ffffff; font-size: 0.9rem;">Schema Analysis</div>
-                    </div>
-                    <div style="text-align: center; min-width: 100px;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
-                        <div style="color: #ffffff; font-size: 0.9rem;">Query Processing</div>
-                    </div>
-                    <div style="text-align: center; min-width: 100px;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
-                        <div style="color: #ffffff; font-size: 0.9rem;">Optimization</div>
-                    </div>
-                    <div style="text-align: center; min-width: 100px;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
-                        <div style="color: #ffffff; font-size: 0.9rem;">Results</div>
-                    </div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            with col2:
+                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                st.markdown("⚙️")
+                st.markdown("**Query Processing**")
+                st.markdown("</div>", unsafe_allow_html=True)
+                
+            with col3:
+                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                st.markdown("🎯")
+                st.markdown("**Optimization**")
+                st.markdown("</div>", unsafe_allow_html=True)
+                
+            with col4:
+                st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                st.markdown("✅")
+                st.markdown("**Results**")
+                st.markdown("</div>", unsafe_allow_html=True)
         
         # Simulate processing with progress
         progress_bar = st.progress(0)
