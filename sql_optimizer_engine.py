@@ -590,3 +590,4 @@ def format_analysis_result(analysis: QueryAnalysisResult) -> str:
     result += f"- **Has HAVING:** {'Yes' if complexity.get('has_having') else 'No'}\n\n"
     
     return result
+
